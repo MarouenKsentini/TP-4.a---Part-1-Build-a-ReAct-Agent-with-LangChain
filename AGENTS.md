@@ -2,9 +2,9 @@
 
 Course lab (TP 4.a, part 1): a ReAct "AI research assistant" notebook built with uv + LangChain 1.x + Groq + Tavily + arXiv + Chroma. All user-facing text (system prompt, tool descriptions, prints, analysis) is French.
 
-Files: `main.ipynb` (the deliverable — 12 cells, all executed with stored outputs), `tp4a-partie1-react-uv.html` (assignment spec — authoritative for code shape, expected outputs, analysis table), `README.md` (French write-up: architecture, golden-set results, exercises — update it when tool names/model/numbers change), `check.py` (key pre-flight), `pyproject.toml` / `uv.lock`, `.env` (untracked, live keys) and `.env.example`.
+Files: `main.ipynb` (the deliverable — 12 cells, all executed with stored outputs), `README.md` (French write-up: architecture, golden-set results, exercises — update it when tool names/model/numbers change), `check.py` (key pre-flight), `pyproject.toml` / `uv.lock`, `.env` (untracked, live keys) and `.env.example`. The assignment statement (`tp4a-partie1-react-uv.html`) is deliberately **not versioned** any more — don't re-add it.
 
-Single commit on `main`. No tests, lint, CI, or task runner. `rag_search tool.py` is an empty untracked stray — ignore it, don't commit it.
+Single commit on `main` (plus small fixes). No tests, lint, CI, or task runner. `rag_search tool.py` is an empty untracked stray — ignore it, don't commit it.
 
 ## Commands (PowerShell, repo root)
 

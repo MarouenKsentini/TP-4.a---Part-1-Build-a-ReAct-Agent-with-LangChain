@@ -103,7 +103,6 @@ tp4a-ReAct/
 ├── check.py                       # pré-vol : vérifie les clés API
 ├── pyproject.toml                 # dépendances (uv)
 ├── uv.lock                        # versions verrouillées
-├── tp4a-partie1-react-uv.html     # sujet du TP (référence)
 ├── AGENTS.md                      # notes pour les agents de code
 ├── .env.example                   # modèle de fichier de clés
 └── .gitignore                     # exclut .env, .venv, caches…
