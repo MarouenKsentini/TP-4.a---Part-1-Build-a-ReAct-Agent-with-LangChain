@@ -194,11 +194,11 @@ Exécution de référence (`gpt-oss-20b`, `temperature=0`) :
 
 | Q | Question | Outils attendus | Outils observés | Durée | Étapes | Verdict |
 |---|----------|-----------------|-----------------|-------|--------|---------|
-| Q1 | Fonctionnement de HNSW | `rag_search` | `rag_search` | 1.72 s | 1 | ✅ Exact |
-| Q2 | Nouveaux embeddings open-source 2025 | `tavily_web_search` | `tavily_web_search` | 2.47 s | 1 | ✅ Exact |
-| Q3 | Papier original LoRA (2021) | `arxiv_search` | `arxiv_search` + `rag_search` | 26.82 s | 2 | ≈ Partiel |
-| Q4 | HNSW vs alternatives en production | `rag_search` + `tavily_web_search` | `tavily_web_search` | 29.95 s | 1 | ≈ Partiel |
-| Q5 | Recette de l'auteur de *Attention is all you need* | aucun (refus) | aucun | 8.24 s | 0 | ✅ Exact |
+| Q1 | Fonctionnement de HNSW | `rag_search` | `rag_search` | 1.91 s | 1 | ✅ Exact |
+| Q2 | Nouveaux embeddings open-source 2025 | `tavily_web_search` | `tavily_web_search` | 3.61 s | 1 | ✅ Exact |
+| Q3 | Papier original LoRA (2021) | `arxiv_search` | `arxiv_search` + `rag_search` | 21.96 s | 2 | ≈ Partiel |
+| Q4 | HNSW vs alternatives en production | `rag_search` + `tavily_web_search` | `tavily_web_search` | 16.84 s | 1 | ≈ Partiel |
+| Q5 | Recette de l'auteur de *Attention is all you need* | aucun (refus) | aucun | 11.78 s | 0 | ✅ Exact |
 
 **Score de routage : 0.8 / 1.0** (`routing_score`, cellule 11).
 
@@ -209,7 +209,7 @@ Ces chiffres ne sont pas reproductibles à l'identique : même à `temperature=0
 ## Enseignements
 
 - **Q1 — le corpus local suffit.** Question simple, un seul outil, une seule étape, réponse fidèle à `vector_databases.md`.
-- **Q2 — bon outil ≠ réponse parfaite.** La recherche web est bien choisie et les sources citées, mais qualifier un modèle sous licence non commerciale d'« open-source » reste approximatif.
+- **Q2 — bon outil ≠ réponse parfaite.** La recherche web est bien choisie et les sources citées, mais la liste annoncée « open-source » mélange les licences : `Llama-Embed-Nemotron-8B` est non commercial et `Gemini-Embedding-2` propriétaire.
 - **Q3 — l'auto-correction est accidentelle.** La requête arXiv est trop vague, l'observation hors sujet, et c'est un second outil (`rag_search`, non attendu) qui sauve la réponse. Le titre du papier cité est d'ailleurs erroné.
 - **Q4 — les règles du prompt restent des suggestions.** Le prompt demande `rag_search` d'abord pour HNSW ; l'agent va directement sur le web. Aucun mécanisme ne l'oblige au multi-hop attendu.
 - **Q5 — le refus hors-domaine est fiable.** Une règle simple et non ambiguë est suivie, sans appel d'outil.
